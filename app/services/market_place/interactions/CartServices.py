@@ -31,7 +31,7 @@ class CartServices:
             existing_cart_item.quantity += quantity
         else:
             # Add a new CartItem to the cart
-            cart_item = CartItem(product.product_id, quantity)
+            cart_item = CartItem(product, quantity)
             buyer.Cart.append(cart_item)
         
         product.availability = product.availability - 1

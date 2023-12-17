@@ -57,7 +57,11 @@ class BuyerServices:
             print("Cart is empty. Cannot complete the checkout.")
             return False
 
-        total_bill = sum(item.product.price * item.quantity for item in buyer.Cart)
+        total_bill = 0.0
+
+        for item in buyer.Cart:
+            product = item.product
+            total_bill += product.price
 
         payment_info = PaymentInformation(total_bill, "Paid")
 

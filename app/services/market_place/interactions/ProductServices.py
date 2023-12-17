@@ -8,7 +8,7 @@ class ProductServices:
 
     def create_product(self, product_id: int, price: float, name: string, availability: int):
         # Assuming product_id is unique
-        if product_id in self.buyers:
+        if product_id in self.products:
             print("Product with this ID already exists.")
             return
         

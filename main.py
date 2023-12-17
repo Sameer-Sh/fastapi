@@ -50,15 +50,24 @@ def main():
     cart_service = CartServices()
     market_place = MarketPlace(buyer_service, product_service, cart_service)
 
+    CommandInterpreter.interpret_command(market_place, "start_market")
+    CommandInterpreter.interpret_command(market_place, "create_user 1 JohnDoe john@example.com password")
+    CommandInterpreter.interpret_command(market_place, "create_product 101 20.0 ProductA 5")
+    CommandInterpreter.interpret_command(market_place, "get_user 1")
+    CommandInterpreter.interpret_command(market_place, "add_to_cart 1 101 2")
+    CommandInterpreter.interpret_command(market_place, "get_cart 1")
+    CommandInterpreter.interpret_command(market_place, "checkout 1 ShippingAddress")
+    CommandInterpreter.interpret_command(market_place, "get_order_history 1")
+
     print("Enter commands. Type 'exit' to quit.")
     
-    while True:
-        command = input()
+    # while True:
+    #     command = input()
 
-        if command == "exit":
-            break
+    #     if command == "exit":
+    #         break
 
-        CommandInterpreter.interpret_command(market_place, command)
+    #     CommandInterpreter.interpret_command(market_place, command)
 
 if __name__ == "__main__":
     main()

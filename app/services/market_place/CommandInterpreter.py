@@ -48,10 +48,10 @@ class CommandInterpreter:
     @staticmethod
     def create_product(market_place: MarketPlace, parts: [string])-> None:
         product_service = market_place.product_service
-        product_id = int(parts.get("product_id", 0))
-        price = float(parts.get("price", 0.0))
-        name = parts.get("name", "")
-        availability = int(parts.get("availability", 0))
+        product_id = int(parts[1])
+        price = float(parts[2])
+        name = parts[3]
+        availability = int(parts[4])
 
         product = product_service.create_product(product_id, price, name, availability)
 
@@ -100,7 +100,7 @@ class CommandInterpreter:
     def get_cart(market_place: MarketPlace, parts: [string]) -> None:
         cart_service = market_place.cart_service
         buyer_id = int(parts[1])
-        cart = cart_service.getCart(buyer_id)
+        cart = cart_service.getCart(market_place.buyer_service, buyer_id)
         if not cart:
             return
         
